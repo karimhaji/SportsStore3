@@ -16,10 +16,10 @@ export class SportstandComponent {
   }
   get SpecialProductsList():Product[]
   {
-  return this.myrepository.getProducts("Category 2").filter(p=>p.name?.includes(" 1"));
+  return this.myrepository.getProducts("گروه 2").filter(p=>p.name?.includes(" 1"));
   }
   get ProductsList():Product[]
   {
-  return this.myrepository.getProducts("Category 2").filter(p=>p.price?.toString()!=null);
+  return this.myrepository.getProducts("گروه 1").filter(p=>p.price?.toString()!=null);
   }
 }
