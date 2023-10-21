@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { Product } from "../model/product.model";
 import { ProductRepository } from "../model/product.repository";
 import { Cart } from "../model/cart.model";
+import { Router } from "@angular/router";
 
 @Component({
 selector: "store",
@@ -13,9 +14,15 @@ export class StoreComponent {
     selectedPage = 1;
     selectedCategory: string | undefined;
     constructor(private repository: ProductRepository,
-        private cart: Cart) { }
+        private cart: Cart,
+        private router: Router) { }
 
-    //constructor(private repository: ProductRepository) { }
+    /*
+The constructor has a Router parameter, which is provided by Angular through the dependency
+injection feature when a new instance of the component is created. In the addProductToCart method, the
+Router.navigateByUrl method is used to navigate to the /cart URL.
+
+*/
 
 
     get products(): Product[] {
@@ -48,5 +55,6 @@ export class StoreComponent {
         }
     addProductToCart(product: Product) {
         this.cart.addLine(product);
+        this.router.navigateByUrl("/cart");
         }
 }
